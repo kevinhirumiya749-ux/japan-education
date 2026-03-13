@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sri Lanka Education | Japan Unit</title>
+    <style>
+        :root {
+            --jp-red: #fc1e4a;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+        }
+
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--light); transition: 0.3s; }
+        
+        /* Language Bar */
+        .lang-bar { background: #f7f6f6; padding: 10px; text-align: left; padding-left: 5%; position: sticky; top: 0; z-index: 2000; border-bottom: 1px solid #ddd; }
+        .lang-bar button { 
+            background: #444; color: white; border: none; padding: 5px 12px; 
+            margin-right: 5px; cursor: pointer; border-radius: 3px; font-size: 12px;
+        }
+        .lang-bar button:hover { background: var(--jp-red); }
+
+        nav { background: var(--jp-red); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        
+        /* Hero Section */
+        .hero {
+            height: 450px;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=1200');
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center;
+        }
+
+        /* 4 Squares Layout */
+        .grid-container {
+            max-width: 1000px; margin: -60px auto 50px; padding: 20px;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+        }
+        .square {
+            background: white; padding: 30px; border-radius: 12px; text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15); cursor: pointer; transition: 0.3s;
+            text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: center;
+        }
+        .square:hover { transform: translateY(-10px); border-bottom: 6px solid var(--jp-red); }
+        .square h3 { margin: 10px 0; font-size: 18px; }
+        
+        .full-width { grid-column: 1 / span 3; background: #fff; min-height: 120px; }
+
+        /* Lesson Section */
+        .lesson-container { display: none; padding: 50px 5%; background: white; text-align: center; }
+        .lesson-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; max-width: 900px; margin: 30px auto; }
+        .lesson-btn { background: var(--jp-red); color: white; border: none; padding: 20px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 16px; }
+        .lesson-btn:hover { background: #333; }
+
+        .active-page { display: block !important; }
+        .hidden { display: none; }
+
+        footer { background: #222; color: white; text-align: center; padding: 30px; margin-top: 50px; }
+    </style>
+</head>
+<body>
+
+    <div class="lang-bar">
+        <button onclick="changeLang('si')">Sinhala</button>
+        <button onclick="changeLang('en')">English</button>
+        <button onclick="changeLang('jp')">日本語</button>
+        <button onclick="changeLang('ta')">Tamil</button>
+    </div>
+
+    <nav>
+        <div class="logo" id="nav-title">Sri Lanka Education</div>
+        <div id="contact-info">📞 0710343062 | Anuradhapura</div>
+    </nav>
+
+    <div id="home-page">
+        <div class="hero">
+            <h1 id="hero-h1">Welcome to Japan Unit</h1>
+            <p id="hero-p">The ultimate guide for Japanese Language Learners in Sri Lanka</p>
+        </div>
+
+        <div class="grid-container">
+            <a href="c:\Users\wasan\Desktop\matta\2018-AL-JAPANESE-PART-I-MCQ-PAPER-ALL-MEDIUM-AlevelApi-PDF.pdf" target="_blank" class="square">
+                <h3 id="sq-1">Japan Papers</h3>
+                <small id="sq-1-sm">Open PDF</small>
+            </a>
+
+            <a href="c:\Users\wasan\Desktop\matta\Beginning Japanese for Professionals_ Book 1.pdf" target="_blank" class="square">
+                <h3 id="sq-2">Japan Reading Books</h3>
+                <small id="sq-2-sm">Open PDF</small>
+            </a>
+
+            <a href="c:\Users\wasan\Desktop\matta\Y_all.pdf" target="_blank" class="square">
+                <h3 id="sq-3">Japan Working Books</h3>
+                <small id="sq-3-sm">Open PDF</small>
+            </a>
+
+            <div class="square full-width" onclick="showLessons()">
+                <h3 id="sq-4">Japan Lessons</h3>
+                <p id="sq-4-p">Click to access Lesson 01 to 10</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="lesson-page" class="lesson-container">
+        <button onclick="showHome()" style="background:#333; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; float:left;">⬅ Back</button>
+        <h2 id="lesson-title">Japanese Language Lessons</h2>
+        
+        <div class="lesson-grid">
+            <button class="lesson-btn">01</button>
+            <button class="lesson-btn">02</button>
+            <button class="lesson-btn">03</button>
+            <button class="lesson-btn">04</button>
+            <button class="lesson-btn">05</button>
+            <button class="lesson-btn">06</button>
+            <button class="lesson-btn">07</button>
+            <button class="lesson-btn">08</button>
+            <button class="lesson-btn">09</button>
+            <button class="lesson-btn">10</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Sri Lanka Education - Anuradhapura Unit | 📞 0710343062</p>
+    </footer>
+
+    <script>
+        function showLessons() {
+            document.getElementById('home-page').classList.add('hidden');
+            document.getElementById('lesson-page').classList.add('active-page');
+            window.scrollTo(0,0);
+        }
+
+        function showHome() {
+            document.getElementById('home-page').classList.remove('hidden');
+            document.getElementById('lesson-page').classList.remove('active-page');
+        }
+
+        const data = {
+            'si': {
+                'nav-title': 'ශ්‍රී ලංකා අධ්‍යාපන',
+                'hero-h1': 'ජපන් ඒකකයට සාදරයෙන් පිළිගනිමු',
+                'hero-p': 'ශ්‍රී ලාංකික සිසුන් සඳහා හොඳම ජපන් භාෂා මධ්‍යස්ථානය',
+                'sq-1': 'ජපන් ප්‍රශ්න පත්‍ර', 'sq-1-sm': 'PDF එක විවෘත කරන්න',
+                'sq-2': 'ජපන් කියවීමේ පොත්', 'sq-2-sm': 'PDF එක විවෘත කරන්න',
+                'sq-3': 'ජපන් වැඩ පොත්', 'sq-3-sm': 'PDF එක විවෘත කරන්න',
+                'sq-4': 'ජපන් පාඩම් මාලාව', 'sq-4-p': 'පාඩම් 1 සිට 10 දක්වා මෙතැනින් බලන්න',
+                'lesson-title': 'ජපන් භාෂා පාඩම්'
+            },
+            'en': {
+                'nav-title': 'Sri Lanka Education',
+                'hero-h1': 'Welcome to Japan Unit',
+                'hero-p': 'The ultimate guide for Japanese Language Learners',
+                'sq-1': 'Japan Papers', 'sq-1-sm': 'Open PDF',
+                'sq-2': 'Japan Reading Books', 'sq-2-sm': 'Open PDF',
+                'sq-3': 'Japan Working Books', 'sq-3-sm': 'Open PDF',
+                'sq-4': 'Japan Lessons', 'sq-4-p': 'Click to access Lesson 01 to 10',
+                'lesson-title': 'Japanese Language Lessons'
+            },
+            'jp': {
+                'nav-title': 'スリランカ教育',
+                'hero-h1': '日本ユニットへようこそ',
+                'hero-p': 'スリランカ人学習者のための究極のガイド',
+                'sq-1': '日本の論文', 'sq-1-sm': 'PDFを開く',
+                'sq-2': '日本の読本', 'sq-2-sm': 'PDFを開く',
+                'sq-3': '日本のワークブック', 'sq-3-sm': 'PDFを開く',
+                'sq-4': '日本語レッスン', 'sq-4-p': 'レッスン01から10にアクセスするにはクリックしてください',
+                'lesson-title': '日本語レッスン'
+            },
+            'ta': {
+                'nav-title': 'இலங்கை கல்வி',
+                'hero-h1': 'ஜப்பான் பிரிவுக்கு வரவேற்கிறோம்',
+                'hero-p': 'ஜப்பானிய மொழி கற்பவர்களுக்கான இறுதி வழிகாட்டி',
+                'sq-1': 'ஜப்பானிய தாள்கள்', 'sq-1-sm': 'PDF ஐத் திறக்கவும்',
+                'sq-2': 'ஜப்பானிய வாசிப்பு புத்தகங்கள்', 'sq-2-sm': 'PDF ஐத் திறக்கவும்',
+                'sq-3': 'ஜப்பானிய வேலை புத்தகங்கள்', 'sq-3-sm': 'PDF ஐத் திறக்கவும்',
+                'sq-4': 'ஜப்பானிய பாடங்கள்', 'sq-4-p': 'பாடம் 01 முதல் 10 வரை அணுக கிளிக் செய்யவும்',
+                'lesson-title': 'ஜப்பானிய மொழி பாடங்கள்'
+            }
+        };
+
+        function changeLang(lang) {
+            document.getElementById('nav-title').innerText = data[lang]['nav-title'];
+            document.getElementById('hero-h1').innerText = data[lang]['hero-h1'];
+            document.getElementById('hero-p').innerText = data[lang]['hero-p'];
+            document.getElementById('sq-1').innerText = data[lang]['sq-1'];
+            document.getElementById('sq-1-sm').innerText = data[lang]['sq-1-sm'];
+            document.getElementById('sq-2').innerText = data[lang]['sq-2'];
+            document.getElementById('sq-2-sm').innerText = data[lang]['sq-2-sm'];
+            document.getElementById('sq-3').innerText = data[lang]['sq-3'];
+            document.getElementById('sq-3-sm').innerText = data[lang]['sq-3-sm'];
+            document.getElementById('sq-4').innerText = data[lang]['sq-4'];
+            document.getElementById('sq-4-p').innerText = data[lang]['sq-4-p'];
+            document.getElementById('lesson-title').innerText = data[lang]['lesson-title'];
+        }
+    </script>
+</body>
+</html>
